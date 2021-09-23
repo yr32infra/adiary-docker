@@ -1,0 +1,95 @@
+version: '3.8'
+
+services:
+  cloudflared:
+    build: ./cloudflared
+    image: cloudflared
+    hostname: cloudflared
+    container_name: adiary__cloudflared
+
+    restart: always
+
+    volumes:
+      - type: bind
+        source: ./cert.pem
+        target: /etc/cloudflared/cert.pem
+        read_only: true
+
+      - type: bind
+        source: ./config.yml
+        target: /etc/cloudflared/config.yml
+        read_only: true
+
+    networks:
+      - nginx_cloudflared
+      - cloudflared_internet
+
+    command:
+      tunnel --hostname ${DOMAIN_NAME} --url http://nginx:80
+
+  nginx:
+    image: nginx:latest
+    hostname: nginx
+    container_name: adiary__nginx
+
+    restart: always
+
+    volumes:
+      - type: bind
+        source: ./nginx.conf
+        target: /etc/nginx/nginx.conf
+        read_only: true
+
+      - type: volume
+        source: shared
+        target: /var/adiary/shared
+        read_only: true
+
+    networks:
+      - adiary_nginx
+      - nginx_cloudflared
+
+    expose:
+      - 80
+
+  adiary:
+    build: ./adiary
+    image: adiary
+    container_name: adiary__adiary
+    hostname: adiary
+
+    restart: always
+
+    depends_on:
+      - mariadb
+
+    volumes:
+      - type: volume
+        source: shared
+        target: /adiary-master/shared/
+
+      - type: volume
+        source: private
+        target: /adiary-master/private/
+
+    networks:
+      - adiary_nginx
+
+volumes:
+  shared:
+    name: adiary__shared
+
+  private:
+    name: adiary__private
+
+networks:
+  adiary_nginx:
+    name: adiary__adiary_nginx
+    internal: true
+
+  nginx_cloudflared:
+    name: adiary__nginx_cloudflared
+    internal: true
+
+  cloudflared_internet:
+    name: adiary__cloudflared_internet
