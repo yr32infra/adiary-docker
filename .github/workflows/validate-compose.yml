@@ -1,0 +1,22 @@
+name: validate docker-compose.yml
+
+on:
+  push:
+    paths:
+      - 'docker-compose.yml'
+      - '.github/workflows/validate-compose.yml'
+  pull_request:
+    paths:
+      - 'docker-compose.yml'
+      - '.github/workflows/validate-compose.yml'
+
+jobs:
+  validate-compose:
+    name: validate docker-compose.yml
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: validate
+        run: |
+          docker-compose -f docker-compose.yml config
+
