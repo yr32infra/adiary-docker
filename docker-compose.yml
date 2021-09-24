@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   cloudflared:
-    image: crazymax/cloudflared
+    image: crazymax/cloudflared:2021.8.7
     hostname: cloudflared
     container_name: adiary__cloudflared
 
@@ -30,7 +30,7 @@ services:
       tunnel --hostname ${DOMAIN_NAME} --url http://nginx:80
 
   nginx:
-    image: nginx:latest
+    image: nginx:1.21.3
     hostname: nginx
     container_name: adiary__nginx
 

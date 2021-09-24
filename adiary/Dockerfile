@@ -1,4 +1,4 @@
-FROM perl:5-buster
+FROM perl:5.34.0-slim-buster
 
 MAINTAINER yanorei32 <yanorei@hotmail.co.jp>
  
