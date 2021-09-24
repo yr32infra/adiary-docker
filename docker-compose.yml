@@ -6,6 +6,9 @@ services:
     hostname: cloudflared
     container_name: adiary__cloudflared
 
+    depends_on:
+      - nginx
+
     restart: always
 
     volumes:
@@ -33,6 +36,9 @@ services:
 
     restart: always
 
+    depends_on:
+      - adiary
+
     volumes:
       - type: bind
         source: ./nginx.conf
@@ -58,9 +64,6 @@ services:
     hostname: adiary
 
     restart: always
-
-    depends_on:
-      - mariadb
 
     volumes:
       - type: volume
