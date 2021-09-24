@@ -7,10 +7,10 @@ RUN set -ex; \
 	apt-get install -qq -y --no-install-recommends \
 		perlmagick libnet-ssleay-perl libcryptx-perl libfcgi-perl; \
 	savedAptMark="$(apt-mark showmanual)"; \
-	apt-get install -qq -y --no-install-recommends wget; \
+	apt-get install -qq -y --no-install-recommends wget ca-certificates; \
 	wget -q -O adiary.tar.gz https://github.com/nabe-abk/adiary/archive/master.tar.gz; \
 	tar xf adiary.tar.gz; \
-	rm adiary.tar.gz \
+	rm adiary.tar.gz; \
 	apt-mark auto '.*' > /dev/null; \
 	[ -z "$savedAptMark" ] || apt-mark manual $savedAptMark; \
 	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
