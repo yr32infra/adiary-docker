@@ -1,6 +1,6 @@
 FROM perl:5.34.0-slim-buster
 
-# datasource=github-releases depName=nabe-abk/adiary versioning=docker
+# datasource=git-tags depName=nabe-abk/adiary versioning=docker
 ARG ADIARY_VERSION="3.40b"
 
 MAINTAINER yanorei32 <yanorei@hotmail.co.jp>
