@@ -5,7 +5,7 @@
   "regexManagers": [
     {
       "fileMatch": ["adiary/Dockerfile"],
-      "matchStrings": ["datasource=(?<datasource>.*?)( versioning=(?<versioning>.*?))?\nARG .*?_VERSION=\"(?<currentValue>.*?)\"\n"],
+      "matchStrings": ["datasource=(?<datasource>.*?)( versioning=(?<versioning>.*?))?\nARG (?<depName>.*?)_VERSION=\"(?<currentValue>.*?)\"\n"],
       "versioningTemplate": "git",
       "datasourceTemplate": "github-releases"
     }
