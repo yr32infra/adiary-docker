@@ -1,7 +1,7 @@
 FROM perl:5.34.0-slim-buster
 
 # depName=git@github.com:nabe-abk/adiary.git
-ARG ADIARY_COMMIT="f2dbb05d48e5abbbf5df6e18b0cedacd4c734a72"
+ARG ADIARY_COMMIT="aad1446f016bdf1a242b66889f84711dcab1faaf"
 
 MAINTAINER yanorei32 <yanorei@hotmail.co.jp>
  
