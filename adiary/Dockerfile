@@ -11,8 +11,10 @@ RUN set -ex; \
 		perlmagick libnet-ssleay-perl libcryptx-perl libfcgi-perl; \
 	savedAptMark="$(apt-mark showmanual)"; \
 	apt-get install -qq -y --no-install-recommends git ca-certificates; \
-	git clone https://github.com/nabe-abk/adiary/; \
+	git clone https://github.com/nabe-abk/adiary; \
+	cd adiary; \
 	git checkout $ADIARY_COMMIT; \
+	cd ../; \
 	rm -r adiary/.git; \
 	apt-mark auto '.*' > /dev/null; \
 	[ -z "$savedAptMark" ] || apt-mark manual $savedAptMark; \
