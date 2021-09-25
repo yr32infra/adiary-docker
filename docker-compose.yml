@@ -68,11 +68,11 @@ services:
     volumes:
       - type: volume
         source: shared
-        target: /adiary-master/shared/
+        target: /adiary/shared/
 
       - type: volume
         source: private
-        target: /adiary-master/private/
+        target: /adiary/private/
 
     networks:
       - adiary_nginx
