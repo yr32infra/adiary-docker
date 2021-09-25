@@ -1,5 +1,13 @@
 {
   "extends": [
     "config:base"
+  ],
+  "regexManagers": [
+    {
+      "fileMatch": ["adiary/Dockerfile"],
+      "matchStrings": ["datasource=(?<datasource>.*?)( versioning=(?<versioning>.*?))?\nARG (?<depName>.*?)_VERSION=\"(?<currentValue>.*?)\"\n"],
+      "versioningTemplate": "git",
+      "datasourceTemplate": "github-releases"
+    }
   ]
 }
