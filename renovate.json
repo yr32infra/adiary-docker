@@ -6,7 +6,7 @@
     {
       "fileMatch": ["adiary/Dockerfile"],
       "matchStrings": ["datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\nARG .*?_VERSION=\"(?<currentValue>.*?)\""],
-      "versioningTemplate": "git",
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}git{{/if}}",
       "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}"
     }
   ]
