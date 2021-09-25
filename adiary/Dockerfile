@@ -1,7 +1,7 @@
 FROM perl:5.34.0-slim-buster
 
-# datasource=github-tags depName=nabe-abk/adiary versioning=pep440
-ARG ADIARY_VERSION="v3.34"
+# depName=git@github.com:nabe-abk/adiary.git
+ARG ADIARY_COMMIT="f2dbb05d48e5abbbf5df6e18b0cedacd4c734a72"
 
 MAINTAINER yanorei32 <yanorei@hotmail.co.jp>
  
@@ -10,11 +10,12 @@ RUN set -ex; \
 	apt-get install -qq -y --no-install-recommends \
 		perlmagick libnet-ssleay-perl libcryptx-perl libfcgi-perl; \
 	savedAptMark="$(apt-mark showmanual)"; \
-	apt-get install -qq -y --no-install-recommends wget ca-certificates; \
-	wget -q -O adiary.tar.gz https://github.com/nabe-abk/adiary/archive/refs/tags/${ADIARY_VERSION}.tar.gz; \
-	tar xf adiary.tar.gz; \
-	mv adiary-$(echo ${ADIARY_VERSION} | sed s/v//) adiary; \
-	rm adiary.tar.gz; \
+	apt-get install -qq -y --no-install-recommends git ca-certificates; \
+	git clone https://github.com/nabe-abk/adiary; \
+	cd adiary; \
+	git checkout $ADIARY_COMMIT; \
+	cd ../; \
+	rm -r adiary/.git; \
 	apt-mark auto '.*' > /dev/null; \
 	[ -z "$savedAptMark" ] || apt-mark manual $savedAptMark; \
 	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \

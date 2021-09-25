@@ -5,9 +5,9 @@
   "regexManagers": [
     {
       "fileMatch": ["adiary/Dockerfile"],
-      "matchStrings": ["datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\nARG .*?_VERSION=\"(?<currentValue>.*?)\""],
-      "versioningTemplate": "regex:^v(?<major>\\d+)\\.(?<minor>\\d+)(?<patch>[^.-]+)?$",
-      "datasourceTemplate": "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}"
+      "matchStrings": ["depName=(?<depName>.*?)?\\s.*?_COMMIT=\"(?<currentValue>)(?<currentDigest>.*?)\""],
+      "versioningTemplate": "git",
+      "datasourceTemplate": "git-refs"
     }
   ]
 }
