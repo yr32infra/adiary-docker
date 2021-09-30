@@ -8,9 +8,10 @@ MAINTAINER yanorei32 <yanorei@hotmail.co.jp>
 RUN set -ex; \
 	apt-get update -qq; \
 	apt-get install -qq -y --no-install-recommends \
-		perlmagick libnet-ssleay-perl libcryptx-perl libfcgi-perl; \
+		libfcgi-perl perlmagick; \
 	savedAptMark="$(apt-mark showmanual)"; \
-	apt-get install -qq -y --no-install-recommends git ca-certificates; \
+	apt-get install -qq -y --no-install-recommends \
+		git ca-certificates; \
 	git clone https://github.com/nabe-abk/adiary; \
 	cd adiary; \
 	git checkout $ADIARY_COMMIT; \
@@ -18,7 +19,8 @@ RUN set -ex; \
 	rm -r adiary/.git; \
 	apt-mark auto '.*' > /dev/null; \
 	[ -z "$savedAptMark" ] || apt-mark manual $savedAptMark; \
-	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
+	apt-get purge -y --auto-remove \
+		-o APT::AutoRemove::RecommendsImportant=false; \
 	rm -rf /var/lib/apt/lists/*; \
 	mkdir -p /adiary/shared/; \
 	mv /adiary/pub/ /adiary/shared/; \
