@@ -11,6 +11,9 @@ services:
 
     restart: always
 
+    # for 600 cert.pem
+    user: root
+
     volumes:
       - type: bind
         source: ./cert.pem
@@ -76,6 +79,9 @@ services:
 
     networks:
       - adiary_nginx
+
+    expose:
+      - 9000
 
 volumes:
   shared:
