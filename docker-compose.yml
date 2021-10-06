@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 
 services:
   cloudflared:
@@ -82,6 +82,22 @@ services:
 
     expose:
       - 9000
+
+  restarter:
+    image: docker:20.10.9
+    hostname: restarter
+    container_name: adiary__restarter
+
+    restart: always
+
+    volumes:
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+
+    command: ["/bin/sh", "-c", "while true; do sleep 86400; docker restart adiary__adiary; done"]
+
+    network_mode: none
 
 volumes:
   shared:
