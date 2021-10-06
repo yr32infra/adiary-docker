@@ -90,9 +90,6 @@ services:
 
     restart: always
 
-    depends_on:
-      - adiary
-
     volumes:
       - type: bind
         source: /var/run/docker.sock
