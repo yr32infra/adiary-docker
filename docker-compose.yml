@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   cloudflared:
-    image: crazymax/cloudflared:2021.8.7
+    image: crazymax/cloudflared:2021.9.2
     hostname: cloudflared
     container_name: adiary__cloudflared
 
