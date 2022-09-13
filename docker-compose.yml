@@ -84,7 +84,7 @@ services:
       - 9000
 
   restarter:
-    image: docker:20.10.17
+    image: docker:20.10.18
     hostname: restarter
     container_name: adiary__restarter
 
