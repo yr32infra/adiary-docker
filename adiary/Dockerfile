@@ -1,4 +1,4 @@
-FROM perl:5.38.0-slim-buster
+FROM perl:5.38.2-slim-buster
 
 # depName=git@github.com:nabe-abk/adiary.git
 ARG ADIARY_COMMIT="82734d4b1434475f9c53bc097e05d5c4c3bdbf50"
