@@ -12,6 +12,7 @@ RUN set -ex; \
 	savedAptMark="$(apt-mark showmanual)"; \
 	apt-get install -qq -y --no-install-recommends \
 		git ca-certificates; \
+        cd /; \
 	git clone https://github.com/nabe-abk/adiary; \
 	cd adiary; \
 	git checkout $ADIARY_COMMIT; \
