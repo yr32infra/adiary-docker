@@ -15,7 +15,7 @@ jobs:
     name: validate docker-compose.yml
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: validate
         run: |
           docker-compose -f docker-compose.yml config
