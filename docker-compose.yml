@@ -33,7 +33,7 @@ services:
       tunnel --hostname ${DOMAIN_NAME} --url http://nginx:80
 
   nginx:
-    image: nginx:1.27.0
+    image: nginx:1.27.4
     hostname: nginx
     container_name: adiary__nginx
 
