@@ -13,10 +13,10 @@ on:
 jobs:
   validate-compose:
     name: validate docker-compose.yml
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - name: validate
         run: |
-          docker-compose -f docker-compose.yml config
+          docker compose -f docker-compose.yml config
 
