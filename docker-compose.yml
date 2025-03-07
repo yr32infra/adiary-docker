@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   cloudflared:
-    image: crazymax/cloudflared:2024.4.1
+    image: crazymax/cloudflared:2024.12.2
     hostname: cloudflared
     container_name: adiary__cloudflared
 
