@@ -1,7 +1,7 @@
 FROM perl:5.43.7-slim-bookworm
 
 # depName=git@github.com:nabe-abk/adiary.git
-ARG ADIARY_COMMIT="0200074f830cf9c0897631d28da7821573af2a08"
+ARG ADIARY_COMMIT="644b97ada00e932e8553bc65d9e555382e1fce30"
 
 MAINTAINER yanorei32 <yanorei@hotmail.co.jp>
  
