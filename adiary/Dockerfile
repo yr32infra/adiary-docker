@@ -1,4 +1,4 @@
-FROM perl:5.43.7-slim-bookworm
+FROM perl:5.43.8-slim-bookworm
 
 # depName=git@github.com:nabe-abk/adiary.git
 ARG ADIARY_COMMIT="8534f38c036477fa9c6fc4a890e5a0ea7ed38615"
